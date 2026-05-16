@@ -19,7 +19,7 @@ This page will include calculations for:
 
 📊 Key Engineering Assumptions
 
-Payload considered: 2 kg
-Gravity: 9.81 m/s²
-Safety factor: 1.5x - 2× depending on motion
-Design goal: smooth motion with minimal backlash and deflection
+- Payload considered: 2 kg
+- Gravity: 9.81 m/s²
+- Safety factor: 1.5x - 2× depending on motion
+- Design goal: smooth motion with minimal backlash and deflection
