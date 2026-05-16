@@ -11,7 +11,7 @@ It documents the reasoning behind design decisions, component sizing, and load a
 This page will include calculations for:
 
 - Joint Load Analysis
-- [Motor + Gearbox Selection & Sizing]([url](https://docs.google.com/spreadsheets/d/1bGajeUhM4DlYe-yPef_99O2zEstQHPLJXcdyXvrxyio/edit?usp=sharing))
+- [Motor + Gearbox Selection & Sizing](https://docs.google.com/spreadsheets/d/1bGajeUhM4DlYe-yPef_99O2zEstQHPLJXcdyXvrxyio/edit?usp=sharing)
 - Bearing load estimation
 - Belt-driven wrist Calculation
 - Joint Shaft sizing
