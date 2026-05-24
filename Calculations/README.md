@@ -10,11 +10,11 @@ It documents the reasoning behind design decisions, component sizing, and load a
 
 This page will include calculations for:
 
-- Joint Load Analysis
+- [Load Analysis](https://docs.google.com/spreadsheets/d/1flMQon3imccp1wO5ARyYb7MmIbnE_xGgQ63j0ybpAY4/edit?usp=sharing)
 - [Motor + Gearbox Selection & Sizing](https://docs.google.com/spreadsheets/d/1bGajeUhM4DlYe-yPef_99O2zEstQHPLJXcdyXvrxyio/edit?usp=sharing)
-- Bearing load estimation
-- Belt-driven wrist Calculation
-- Joint Shaft sizing
+- Bearing Selection 
+- Belt-Drive Calculation
+- [Cycle Time Analysis](https://docs.google.com/spreadsheets/d/1MkdD3wOftaeriaic40c1s6u7MPDt7mI6B5DUlj4-dvs/edit?usp=sharing)
 
 
 📊 Key Engineering Assumptions
