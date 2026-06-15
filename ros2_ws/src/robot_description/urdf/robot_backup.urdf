@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="four_axis_robot">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="link1">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint1" type="fixed">
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.125" rpy="0 0 0"/>
+  </joint>
+
+</robot>
