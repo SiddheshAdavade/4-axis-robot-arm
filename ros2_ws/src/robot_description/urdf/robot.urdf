@@ -17,8 +17,11 @@
     </geometry>
   </collision>
   <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <mass value="10.0"/>
-    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+            iyy="0.1" iyz="0.0"
+            izz="0.1"/>
   </inertial>
 </link>
 
@@ -40,8 +43,11 @@
     </geometry>
   </collision>
   <inertial>
+    <origin xyz="0 0 0.125" rpy="0 0 0"/>
     <mass value="10.0"/>
-    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+            iyy="0.1" iyz="0.0"
+            izz="0.1"/>
   </inertial>
 </link>
 
@@ -63,8 +69,11 @@
     </geometry>
   </collision>
   <inertial>
+    <origin xyz="0.125 0 0" rpy="0 0 0"/>
     <mass value="10.0"/>
-    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+            iyy="0.1" iyz="0.0"
+            izz="0.1"/>
   </inertial>
 </link>
 
@@ -86,8 +95,11 @@
     </geometry>
   </collision>
   <inertial>
+    <origin xyz="0.125 0 0" rpy="0 0 0"/>
     <mass value="10.0"/>
-    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+            iyy="0.1" iyz="0.0"
+            izz="0.1"/>
   </inertial>
 </link>
 
@@ -109,28 +121,29 @@
     </geometry>
   </collision>
   <inertial>
+    <origin xyz="0.075 0 0" rpy="0 0 0"/>
     <mass value="10.0"/>
-    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+            iyy="0.1" iyz="0.0"
+            izz="0.1"/>
   </inertial>
 </link>
 
 <!-- ================= TCP ================= -->
-  <link name="tcp"/>
+  <link name="tcp">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+              iyy="0.001" iyz="0.0"
+              izz="0.001"/>
+    </inertial>
+  </link>
   <joint name="tcp_joint" type="fixed">
     <parent link="tool0"/>
     <child link="tcp"/>
     <origin xyz="0.15 0 0" rpy="0 0 0"/>
   </joint>
-  <collision name="tcp_collision">
-    <origin xyz="0.15 0 0" rpy="0 0 0"/>
-    <geometry>
-      <sphere radius="0.02"/>
-    </geometry>
-  </collision>
-  <inertial name="tcp_inertial">
-    <mass value="0.1"/>
-    <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
-  </inertial>
 
 <!-- ================= JOINT1 ================= -->
   <joint name="base_joint" type="revolute">
