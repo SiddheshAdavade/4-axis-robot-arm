@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: robot_description
+    relative_path: urdf/robot.urdf
+  srdf:
+    relative_path: config/four_axis_robot.srdf
+  package_settings:
+    author_name: ""
+    author_email: ""
+    generated_timestamp: 1781797064

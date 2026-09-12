@@ -1,0 +1,15 @@
+# ROS 2 generated files
+build/
+install/
+log/
+
+# Local build/debug logs
+build_log.txt
+
+# Generated TF/frame diagrams
+frames_*.gv
+frames_*.pdf
+
+# Backup files
+*.bak
+*~

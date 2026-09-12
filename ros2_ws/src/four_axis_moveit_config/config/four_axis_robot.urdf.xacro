@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<robot name="four_axis_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ros2_control include -->
+  <xacro:include filename="$(find four_axis_moveit_config)/config/four_axis_robot.ros2_control.xacro"/>
+  <xacro:four_axis_robot_ros2_control
+    name="four_axis_robot"
+    initial_positions_file="$(find four_axis_moveit_config)/config/initial_positions.yaml"/>
+
+  <!-- ================= WORLD (dummy root for KDL) ================= -->
+  <link name="world"/>
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ================= BASE ================= -->
+  <link name="base_link">
+    <visual>
+      <geometry><cylinder radius="0.08" length="0.10"/></geometry>
+      <material name="gray"><color rgba="0.4 0.4 0.4 1"/></material>
+    </visual>
+    <collision>
+      <geometry><cylinder radius="0.08" length="0.10"/></geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- ================= SHOULDER ================= -->
+  <link name="shoulder_link">
+    <visual>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry><box size="0.05 0.05 0.25"/></geometry>
+      <material name="red"><color rgba="1 0 0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <geometry><box size="0.05 0.05 0.25"/></geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.125" rpy="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- ================= BICEP ================= -->
+  <link name="bicep_link">
+    <visual>
+      <origin xyz="0.125 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.25 0.045 0.045"/></geometry>
+      <material name="green"><color rgba="0 1 0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.125 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.25 0.045 0.045"/></geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.125 0 0" rpy="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- ================= FOREARM ================= -->
+  <link name="forearm_link">
+    <visual>
+      <origin xyz="0.125 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.25 0.040 0.040"/></geometry>
+      <material name="blue"><color rgba="0 0 1 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.125 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.25 0.040 0.040"/></geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.125 0 0" rpy="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- ================= TOOL ================= -->
+  <link name="tool0">
+    <visual>
+      <origin xyz="0.075 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.15 0.03 0.03"/></geometry>
+      <material name="yellow"><color rgba="1 1 0 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.075 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.15 0.03 0.03"/></geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.075 0 0" rpy="0 0 0"/>
+      <mass value="10.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- ================= TCP ================= -->
+  <link name="tcp">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- ================= JOINTS ================= -->
+  <joint name="base_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="shoulder_link"/>
+    <origin xyz="0 0 0.125" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.1416" upper="3.1416" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <joint name="shoulder_joint" type="revolute">
+    <parent link="shoulder_link"/>
+    <child link="bicep_link"/>
+    <origin xyz="0 0 0.250" rpy="0 -1.5708 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.094" upper="2.094" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <joint name="elbow_joint" type="revolute">
+    <parent link="bicep_link"/>
+    <child link="forearm_link"/>
+    <origin xyz="0.250 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.571" upper="1.571" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <joint name="wrist_joint" type="revolute">
+    <parent link="forearm_link"/>
+    <child link="tool0"/>
+    <origin xyz="0.250 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.571" upper="1.571" effort="100.0" velocity="1.0"/>
+  </joint>
+
+  <joint name="tcp_joint" type="fixed">
+    <parent link="tool0"/>
+    <child link="tcp"/>
+    <origin xyz="0.15 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <gazebo>
+    <plugin
+      filename="libgz_ros2_control-system.so"
+      name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+
+      <parameters>
+        $(find four_axis_moveit_config)/config/ros2_controllers.yaml
+      </parameters>
+
+    </plugin>
+  </gazebo>
+
+</robot>
